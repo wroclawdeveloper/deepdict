@@ -1,0 +1,10 @@
+easy_admin:
+    site_name: 'DeepDict'
+    entities:
+        Faq:
+            class : App\Entity\Faq
+    design:
+        brand_color: '#1784c7'
+        menu:
+                    - { label: 'Dashboard', route: 'admin_dashboard', default: true }
+                    - { entity: 'Faq', label: 'Faq', icon: '' }
