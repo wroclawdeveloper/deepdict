@@ -41,7 +41,7 @@ class AdminController extends BaseAdminController
             if ($yr->login('test', 'sekret')) {     // logging into webservice
                 $fields = array('question', 'faq_answer', 'assigned_user_id');
                 $cond = Array(array('fieldName' => 'question', 'value' => 'test', 'operator' => 'n'));
-                $yfaqs = $yr->listRecordsCond('Faq', 2, 0, $fields, $cond);
+                $yfaqs = $yr->listRecordsCond('Faq', 5000, 0, $fields, $cond);
                 if ($yfaqs['count'] > 0) {
                     foreach($yfaqs['records'] as $k => $yfaq) {
                         $duplicates = $em->getRepository('App:Faq')->findBy(['question' => $yfaq['question']]);

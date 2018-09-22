@@ -19,22 +19,41 @@ class FaqRepository extends ServiceEntityRepository
         parent::__construct($registry, Faq::class);
     }
 
-//    /**
-//     * @return Faq[] Returns an array of Faq objects
-//     */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Faq[] Returns an array of Faq objects
+     */
+    public function findRandom()
     {
         return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
+            ->andWhere('f.id < :val')
+            ->setParameter('val', 200)
             ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
+            ->setMaxResults(2)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
+    /**
+     * @return Faq[] Returns an array of Faq objects
+     */
+    public function findRandomFaq()
+    {
+        $id_limits = $this->createQueryBuilder('f')
+            ->select('MIN(f.id)', 'MAX(f.id)')
+            ->getQuery()
+            ->getOneOrNullResult();
+        $random_possible_id = rand($id_limits[1], $id_limits[2]);
+
+        return $this->createQueryBuilder('f')
+            ->where('f.id >= :random_id')
+            ->setParameter('random_id', $random_possible_id)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
+
 
     /*
     public function findOneBySomeField($value): ?Faq
