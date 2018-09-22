@@ -78,4 +78,18 @@ class AdminController extends BaseAdminController
             'randomGenus' => $faq
         ]);
     }
+
+    /**
+     * @Route("/knowledgebase", name="admin_knowledgebase")
+     */
+    public function knowledgebaseAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $bases = $em->getRepository('App:KnowledgeBase')->findAll();
+        $faq = new Faq();
+
+        return $this->render('knowledgebase.html.twig', [
+            'bases' => $bases
+        ]);
+    }
 }

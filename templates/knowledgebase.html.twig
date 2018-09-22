@@ -1,0 +1,74 @@
+{% set _content_title = 'Dictionary' %}
+
+{% block head_stylesheets %}
+    <link rel="stylesheet" href="{{ asset('sliderpro/css/slider-pro.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('sliderpro/css/examples.css') }}" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+{% endblock %}
+{% block body_javascript %}
+    <script type="text/javascript" src="{{ asset('sliderpro/js/jquery-1.11.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('sliderpro/js/jquery.sliderPro.min.js') }}"></script>
+    <script type="text/javascript">
+        $( document ).ready(function( $ ) {
+            $( '#example5' ).sliderPro({
+                width: 670,
+                height: 500,
+                orientation: 'vertical',
+                loop: true,
+                arrows: false,
+                buttons: false,
+                thumbnailsPosition: 'right',
+                thumbnailPointer: true,
+                thumbnailWidth: 200,
+                breakpoints: {
+                    800: {
+                        thumbnailsPosition: 'bottom',
+                        thumbnailWidth: 270,
+                        thumbnailHeight: 100
+                    },
+                    500: {
+                        thumbnailsPosition: 'bottom',
+                        thumbnailWidth: 120,
+                        thumbnailHeight: 50
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+
+
+
+        <div id="example5" class="slider-pro sp-black">
+            <div class="sp-slides">
+                {% for base in bases %}
+                    <div class="sp-slide" id="sp_slide_{{ loop.index }}">
+
+                        <h3 class="sp-layer"
+                            data-position="topLeft" data-horizontal="10%" data-vertical="10%"
+                            data-show-transition="down" data-show-delay="100" data-hide-transition="up">
+                            {{ base.content }}
+                        </h3>
+
+                        <div class="sp-caption" id="sp_caption_{{ loop.index }}">{{ base.category }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="sp-thumbnails">
+                {% for base in bases %}
+                    <div class="sp-thumbnail">
+                        <div class="sp-thumbnail-text" id="thumbnail_1">
+                            <div class="sp-thumbnail-title"></div>
+                            <div class="sp-thumbnail-description">{{ base.title }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
