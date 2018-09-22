@@ -16,7 +16,8 @@
         "symfony/yaml": "*"
     },
     "require-dev": {
-        "symfony/dotenv": "*"
+        "symfony/dotenv": "*",
+        "symfony/var-dumper": "*"
     },
     "config": {
         "preferred-install": {
