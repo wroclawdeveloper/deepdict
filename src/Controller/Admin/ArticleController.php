@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Faq;
+use App\Entity\Article;
 use App\Service\MarkdownTransformer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -13,11 +13,11 @@ use Symfony\Component\HttpFoundation\Response;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as EasyAdminController;
 use App\Utils\YetiRest;
 
-class FaqController extends EasyAdminController
+class ArticleController extends EasyAdminController
 {
 
     /**
-     * @param Faq $entity
+     * @param Article $entity
      */
     protected function prePersistEntity($entity)
     {

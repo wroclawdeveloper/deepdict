@@ -1,13 +1,16 @@
+{% extends '@EasyAdmin/default/layout.html.twig' %}
 {% set _content_title = 'Dictionary' %}
 
 {% block head_stylesheets %}
-    <link rel="stylesheet" href="{{ asset('bundles/sliderpro/css/slider-pro.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('bundles/sliderpro/css/examples.css') }}" />
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('sliderpro/css/slider-pro.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('sliderpro/css/examples.css') }}" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
 {% endblock %}
 {% block body_javascript %}
-    <script type="text/javascript" src="{{ asset('bundles/sliderpro/js/jquery-1.11.0.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/sliderpro/js/jquery.sliderPro.min.js') }}"></script>
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('sliderpro/js/jquery-1.11.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('sliderpro/js/jquery.sliderPro.min.js') }}"></script>
     <script type="text/javascript">
         $( document ).ready(function( $ ) {
             $( '#example5' ).sliderPro({

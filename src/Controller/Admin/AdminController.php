@@ -86,9 +86,21 @@ class AdminController extends BaseAdminController
     {
         $em = $this->getDoctrine()->getManager();
         $bases = $em->getRepository('App:KnowledgeBase')->findAll();
-        $faq = new Faq();
 
         return $this->render('knowledgebase.html.twig', [
+            'bases' => $bases
+        ]);
+    }
+
+    /**
+     * @Route("/article", name="admin_article")
+     */
+    public function articleAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $bases = $em->getRepository('App:Article')->findAll();
+
+        return $this->render('article.html.twig', [
             'bases' => $bases
         ]);
     }
