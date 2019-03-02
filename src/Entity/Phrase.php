@@ -3,12 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\FaqRepository")
+ * @UniqueEntity(fields={"question"}, message="It looks like you already have a question!")
  */
-class Article
+class Phrase
 {
     /**
      * @ORM\Id()
@@ -18,21 +19,14 @@ class Article
     private $id;
 
     /**
-     * @Assert\NotBlank()
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
-    private $category;
+    private $question;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $title;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $content;
+    private $answer;
 
     /**
      * @ORM\Column(type="datetime")
@@ -49,48 +43,31 @@ class Article
      */
     private $userId;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $link;
-
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCategory()
+    public function getQuestion(): ?string
     {
-        return $this->category;
+        return $this->question;
     }
 
-    public function setCategory(Category $category = null)
+    public function setQuestion(string $question): self
     {
-        $this->category = $category;
+        $this->question = $question;
 
         return $this;
     }
 
-    public function getTitle(): ?string
+    public function getAnswer(): ?string
     {
-        return $this->title;
+        return $this->answer;
     }
 
-    public function setTitle(string $title): self
+    public function setAnswer(string $answer): self
     {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getContent(): ?string
-    {
-        return $this->content;
-    }
-
-    public function setContent(string $content): self
-    {
-        $this->content = $content;
+        $this->answer = $answer;
 
         return $this;
     }
@@ -127,18 +104,6 @@ class Article
     public function setUserId(int $userId): self
     {
         $this->userId = $userId;
-
-        return $this;
-    }
-
-    public function getLink(): ?string
-    {
-        return $this->link;
-    }
-
-    public function setLink(string $link): self
-    {
-        $this->link = $link;
 
         return $this;
     }

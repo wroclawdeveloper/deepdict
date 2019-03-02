@@ -54,7 +54,7 @@ class KnowledgeBase
         return $this->id;
     }
 
-    public function getCategory(): ?string
+    public function getCategory()
     {
         return $this->category;
     }

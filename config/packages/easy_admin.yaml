@@ -1,9 +1,29 @@
 easy_admin:
     site_name: 'DeepDict'
+    list:
+        title: 'List of %%entity_label%%'
+        actions: ['show', 'export']
     entities:
         Faq:
             class : App\Entity\Faq
             controller: App\Controller\Admin\FaqController
+            list:
+                fields:
+                    - question
+                    - answer
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-9', label: 'Basic information' }
+                    - question
+                    - { type: 'section', label: ' ' }
+                    - answer
+        Phrase:
+            class : App\Entity\Phrase
+            controller: App\Controller\Admin\PhraseController
+            list:
+                fields:
+                    - question
+                    - answer
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-9', label: 'Basic information' }
@@ -17,6 +37,7 @@ easy_admin:
                 fields:
                     - title
                     - content
+                    - category
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-9', label: 'Basic information' }
@@ -31,6 +52,7 @@ easy_admin:
                 fields:
                     - title
                     - { property: 'link', type: 'url' }
+                    - category
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-12', label: 'Basic information' }
@@ -52,6 +74,7 @@ easy_admin:
                       children:
                         - { label: 'Faq synchronization', route: 'faq_synchronization', default: true }
                     - { entity: 'Faq', label: 'Faq', icon: '' }
+                    - { entity: 'Phrase', label: 'Phrase', icon: '' }
                     - { entity: 'KnowledgeBase', label: 'KnowledgeBase', icon: '' }
                     - { entity: 'Article', label: 'Article', icon: '' }
                     - { entity: 'Category', label: 'Category', icon: '' }

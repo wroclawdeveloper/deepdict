@@ -2,8 +2,8 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="0333a135-9bb2-45a3-88e1-f0ab64775c0a" name="188.68.244.4" url="http://188.68.244.4">
-        <fileTransfer host="188.68.244.4" port="22" rootFolder="/var/www/deepdict" accessType="SFTP">
+      <webServer id="d1ea5721-c09d-43d2-84ec-cbc1d8318d62" name="etim.pl" url="http://etim.pl">
+        <fileTransfer host="etim.pl" port="22" rootFolder="/home/users/webmaster/public_html/mailing/deepdict" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

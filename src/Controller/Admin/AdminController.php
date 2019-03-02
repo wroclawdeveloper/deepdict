@@ -36,7 +36,7 @@ class AdminController extends BaseAdminController
     public function faqsynchronizationAction()
     {
         $em = $this->getDoctrine()->getManager();
-
+        $yr = new YetiRest('http://sasza.webmaster.etim.pl/yeti420com', 'test', 'sekret', 'mpl5c04tZVGuoAk1waWXeiqOPzrSb82T');
         try {
             if ($yr->login('test', 'sekret')) {     // logging into webservice
                 $fields = array('question', 'faq_answer', 'assigned_user_id');
